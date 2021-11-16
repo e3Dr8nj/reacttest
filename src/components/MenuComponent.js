@@ -10,8 +10,8 @@ class Menu extends Component{
             ]
         }
     }
-    render(){
-        const menu = this.state.dishes.map(dish=>{return(
+    render(props){
+        const menu = this.props.dishes.map(dish=>{return(
         <div key = {dish.id} className = "col-12 mt-5">
              <Media tag="li">
                  <Media left middle>
