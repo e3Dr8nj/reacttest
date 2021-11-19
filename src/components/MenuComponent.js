@@ -1,31 +1,9 @@
 import React, {Component} from 'react'
 import  {Media,Card,CardImg,CardImgOverlay,CardText,CardBody,CardTitle} from 'reactstrap'
-///import DishDetail from './MenuComponent.js'
+import DishDetail from './DishDetailComponent.js'
 let menu = []
 class Dd extends Component{
     render(props){return(<div>{this.props.dish.name}</div>)}
-}
-class DishDetail extends Component{
-    /*
-        constructor(props){
-            super(props)
-            this.state={}
-        }
-        */
-       render(props){
-          
-           return(
-         
-            <div className ="row" >
-            <div  className="col-12 col-md-5 m-1">
-                    {this.props.dish.name}
-            </div>
-              
-            </div>
-           
-
-           )
-       }
 }
 class Menu extends Component{
     constructor(props){

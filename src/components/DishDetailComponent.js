@@ -15,7 +15,7 @@ class DishDetail extends Component{
          
             <div className ="row" >
             <div  className="col-12 col-md-5 m-1">
-                    dish
+                    {this.props.dish.name}
             </div>
               
             </div>
