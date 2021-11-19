@@ -8,6 +8,7 @@ class DishDetail extends Component{
             super(props)
             this.state={}
         }
+        
         renderDish(dish){
             return(
                 <Card>
@@ -18,6 +19,19 @@ class DishDetail extends Component{
                     </CardBody>
                 </Card>
             )
+        }
+        renderComments(comments){
+            if(comments===null) return(<div></div>)
+            const result = comments.map((comment)=>this.renderComment(comment) )
+            return(<div><h4>Comments</h4>
+                <ul class="list-unstyled">
+                {result}
+                </ul></div>)
+        }
+        
+        renderComment(comment){
+        
+            return(<div><li>{comment.comment}</li><li>{"-- "+comment.author+", "+comment.date}</li></div>)
         }
     
        render(props){
@@ -30,7 +44,9 @@ class DishDetail extends Component{
                      {this.renderDish(this.props.dish)}
                 
             </div>
-           <div  className="col-12 col-md-5 m-1">hhh</div>
+           <div  className="col-12 col-md-5 m-1">
+               {this.renderComments(this.props.dish.comments)}
+           </div>
             
         </div>
                 
