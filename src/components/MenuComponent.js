@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import  {Media,Card,CardImg,CardImgOverlay,CardText,CardBody,CardTitle} from 'reactstrap'
-import DishDetail from './DishDetailComponent.js'
-let menu = []
+
+//let menu = []
 class Dd extends Component{
     render(props){return(<div>{this.props.dish.name}</div>)}
 }
@@ -9,8 +9,8 @@ class Menu extends Component{
     constructor(props){
         super(props)
         this.state={
-            selectedDish : null
-           , dishes:props.dishes
+           
+            dishes:props.dishes
         /*    dishes:[ 
                 {id:'1',name:'dish1',description:'very tasty'}
                 ,{id:'2',name:'dish2',description:'very tasty2'}
@@ -25,10 +25,7 @@ class Menu extends Component{
         console.log('Menu component componentDidMount is invoked')
             
     }
-    onDishSelect=(dish)=>{
-      this.setState({selectedDish:dish})
-        
-    }
+    
 
     dishRender=(dish)=>{
         
@@ -36,10 +33,11 @@ class Menu extends Component{
            
             return(
                 //<Dd dish={this.state.selectedDish}></Dd>
-                <DishDetail dish={this.state.selectedDish} />
+             //   <DishDetail dish={this.state.selectedDish} />
                 /*
                 
                 */
+               <div></div>
             )
             
         }else{return (<div></div>)}
@@ -48,7 +46,7 @@ class Menu extends Component{
        
         const menu = this.props.dishes.map((dish)=>{return(
         <div className = "col-12 col-md-5 m-1" key={dish.id}>
-             <Card onClick={()=>this.onDishSelect(dish)} key = {dish.id}>
+             <Card onClick={()=>this.props.onClick(dish.id)} key = {dish.id}>
                  <CardImg width="100%" src = {dish.image} alt = {dish.name}></CardImg>
                  <CardImgOverlay>
                      <CardTitle>{dish.name}</CardTitle>
@@ -58,18 +56,14 @@ class Menu extends Component{
         console.log('Menu render is invoked')
         
         return(
-            <div className = "component">
-            <div className ="row">
+            
+            <div className = "container" > 
+            <div className ="row" >
                     
                     {menu}
               
             </div>
-            <div className ="row" >
             
-                    {this.dishRender(this.state.selectedDish)}
-            
-              
-            </div>
             </div>
         )
     }
