@@ -4,11 +4,12 @@ import  {Media,Card,CardImg,CardImgOverlay,CardText,CardBody,CardTitle} from 're
 import React, { Component } from 'react'
 class DishDetail extends Component{
     
-        constructor(props){
-            super(props)
-            this.state={}
+        componentDidMount(){
+            console.log('DishDetailComponent componentDidMount invoked')
         }
-        
+        componentDidUpdate(){
+            console.log('DishDetailComponent componentDidUpdate invoked')
+        }
         renderDish(dish){
             return(
                 <Card>
@@ -35,6 +36,7 @@ class DishDetail extends Component{
         }
     
        render(props){
+        console.log('DishDetailComponent render invoked')
           if(this.props.dish==null) return(<div></div>)
           console.log('dishdetail')
            return(

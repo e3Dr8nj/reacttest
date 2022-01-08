@@ -1,22 +1,11 @@
 import React, {Component} from 'react'
 import  {Media,Card,CardImg,CardImgOverlay,CardText,CardBody,CardTitle} from 'reactstrap'
 
-//let menu = []
-class Dd extends Component{
-    render(props){return(<div>{this.props.dish.name}</div>)}
-}
+
 class Menu extends Component{
     constructor(props){
         super(props)
-        this.state={
-           
-            dishes:props.dishes
-        /*    dishes:[ 
-                {id:'1',name:'dish1',description:'very tasty'}
-                ,{id:'2',name:'dish2',description:'very tasty2'}
-            ]
-            */
-        }
+       
         
         console.log('Menu component is invoked')
         

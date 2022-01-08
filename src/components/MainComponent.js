@@ -9,7 +9,7 @@ class Main extends Component {
     super(props);
     this.state = {
       dishes: DISHES
-      ,selectedDish:1
+      ,selectedDish:null
     };
   }
    onDishSelect=(dishId)=>{
