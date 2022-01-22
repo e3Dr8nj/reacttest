@@ -10,7 +10,8 @@ class App extends Component {
     render(props){return(
       <BrowserRouter>
     <div>
-      <Main />
+     <Main /> 
+    
     </div>
     </BrowserRouter>
     )}
