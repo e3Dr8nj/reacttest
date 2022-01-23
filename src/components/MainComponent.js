@@ -18,7 +18,8 @@ class Main extends Component {
       ,comments:COMMENTS
       ,promotions:PROMOTIONS
       ,leaders:LEADERS
-     // ,selectedDish:null
+
+      ,selectedDish:null
     };
   }
   /*
@@ -36,11 +37,24 @@ class Main extends Component {
         leader={this.state.leaders.filter((leader)=>leader.featured)[0]}
 
         />)}
+        const DishWithId = ({match})=>{
+          console.log(parseInt(match.params.dishId,10))
+          let dishId = parseInt(match.params.dishId,10)
+          let comments = this.state.comments.filter(c=>c.dishId===dishId)
+          console.log(comments)
+          return(
+            <DishDetail 
+            dish={this.state.dishes.filter( (dish)=>dish.id===dishId)[0]}
+            comments={comments}
+            ></DishDetail>
+          )
+        }
       return(<div>
      <Header/>
      <Switch>
        <Route path='/home' component={HomePage}></Route>
        <Route exact path='/menu' component={()=><Menu dishes={this.state.dishes}></Menu>}></Route>
+      <Route path='/menu/:dishId' component={DishWithId} />
        <Route path='/contactus' component={Contact}></Route>
        <Redirect to='/home'></Redirect>
      </Switch>
