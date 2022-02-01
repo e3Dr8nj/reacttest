@@ -5,6 +5,7 @@ import Header from './HeaderComponent.js'
 import Footer from './FooterComponent.js'
 import Menu from './MenuComponent.js'
 import Home from './HomeComponent.js'
+import About from './AboutComponent'
 import {DISHES} from '../shared/dishes'
 import {COMMENTS} from '../shared/comments'
 import {LEADERS} from '../shared/leaders'
@@ -44,24 +45,26 @@ class Main extends Component {
           console.log(comments)
           return(
             <DishDetail 
-            dish={this.state.dishes.filter( (dish)=>dish.id===dishId)[0]}
-            comments={comments}
+            dish={this.state.dishes.filter( (dish)=>dish.id===parseInt(match.params.dishId,10))[0]}
+            comments={this.state.comments.filter(comment=>comment.dishId===parseInt(match.params.dishId,10))}
             ></DishDetail>
           )
         }
       return(<div>
      <Header/>
      <Switch>
-       <Route path='/home' component={HomePage}></Route>
+       <Route path='/home' component={HomePage}></Route> 
+       
        <Route exact path='/menu' component={()=><Menu dishes={this.state.dishes}></Menu>}></Route>
-      <Route path='/menu/:dishId' component={DishWithId} />
+      <Route path='/menu/:dishId' component={DishWithId} /> 
        <Route path='/contactus' component={Contact}></Route>
+       <Route path='/about-us' component={()=><About leaders={this.state.leaders}></About>}></Route>
+      \
+      
        <Redirect to='/home'></Redirect>
      </Switch>
     <Footer></Footer>
     </div>)}
-    
-    
-}
+   }
 
 export default Main;

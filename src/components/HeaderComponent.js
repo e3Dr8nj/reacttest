@@ -43,6 +43,7 @@ class Header extends Component{
                       <span className="fa fa-address card"></span>Contact Us
                   </NavLink>
               </NavItem>
+             
           </Nav>
           </Collapse>
          </div>

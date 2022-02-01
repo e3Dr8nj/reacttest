@@ -1,7 +1,34 @@
-import React from 'react';
-import {Breadcrumb,BreadcrumbItem} from 'reactstrap'
+import React,{Component} from 'react';
+import {Breadcrumb,BreadcrumbItem, Button, Form, FormGroup,Label,Input,Col} from 'reactstrap'
 import {Link} from 'react-router-dom'
-function Contact(props) {
+//function Contact(props) {
+    class Contact extends Component {
+        constructor(props){
+            super(props)
+            this.state={
+                lastname:''
+                ,firstname:''
+                ,telnum:''
+                ,email:''
+                ,agree: false
+                ,contactType:'Tel.'
+                ,message:''
+            }
+            this.handleSubmit=this.handleSubmit.bind(this)
+            this.handleInputChange=this.handleInputChange.bind(this)
+        }
+        handleInputChange(event){
+            const target = event.target
+            const value = target.type==='checkbox'?target.checked:target.value
+            const name = target.name
+            this.setState({[name]:value})
+        }
+        handleSubmit(event){
+            console.log('Current state is: '+JSON.stringify(this.state))
+            alert('Current state is: '+JSON.stringify(this.state))
+            event.preventDefault()
+        }
+        render(props){
     return(
         <div className="container">
             <div className="row">
@@ -12,7 +39,7 @@ function Contact(props) {
 
                 <div className="col-12">
                     <h3>Contact Us</h3>
-                    <hr />
+                    <hr />I,
 
                 </div>
             </div>
@@ -41,9 +68,80 @@ function Contact(props) {
                         <a role="button" className="btn btn-success" href="mailto:confusion@food.net"><i className="fa fa-envelope-o"></i> Email</a>
                     </div>
                 </div>
+               <br/>
+              
             </div>
+
+            <div className="row row-content">
+                    <div className="col-12">
+                        <h3>Send us Your Feedback</h3>
+                    </div>
+                    <div className='col-12 col-md-9'>
+                        <Form onSubmit={this.handleSubmit} >
+                            <FormGroup row>
+                                <Label xtmlFor='firstname' md={2}>First Name</Label>
+                                <Col md={10}>
+                                    <Input onChange={this.handleInputChange}
+                                    type="text" id="firstname" name="firstname" 
+                                    placeholder="FirstName" value={this.state.firstname}></Input>
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Label xtmlFor='lastname' md={2}>Last Name</Label>
+                                <Col md={10}>
+                                    <Input onChange={this.handleInputChange} type="text" id="lastname" name="lastname"
+                                    placeholder="FirstName" value={this.state.lastname}></Input>
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Label xtmlFor='telnum' md={2}>Contact tel.</Label>
+                                <Col md={10}>
+                                    <Input onChange={this.handleInputChange} type="tel" id="telnum" name="telnum"
+                                    placeholder="Tel. number" value={this.state.telnum}></Input>
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Label xtmlFor='email' md={2}>Email:</Label>
+                                <Col md={10}>
+                                    <Input onChange={this.handleInputChange} type="text" id="email" name="email"
+                                    placeholder="Email" value={this.state.email}></Input>
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Col md={{size:6,offset:2}}>
+                                    <FormGroup check>
+                                        <Label check>
+                                            <Input onChange={this.handleInputChange} type="checkbox" name="agree" checked={this.state.agree} />{' '}
+                                            <strong>May we contact you?</strong>
+                                        </Label>
+                                    </FormGroup>
+                                </Col>
+                                <Col md={{size:6,offset:1}}>
+                                    <Input onChange={this.handleInputChange} type="select" name="contactType"
+                                    value={this.state.contactType}>
+                                        <option>Tel.</option>
+                                        <option>Email:</option>
+                                    </Input>
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Label xtmlFor="message" md={2}>Feedback</Label>
+                                <Col md={10}>
+                                    <input onChange={this.handleInputChange} type="textarea" name="message" id="message" value={this.state.message} rows="12" ></input>
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Col md={{size:10,offset:2}}>
+                                    <Button type="submit" color="primary">Send Feedback</Button>
+                                </Col>
+                            </FormGroup>
+                        </Form>
+                    </div>
+                </div>
+    
         </div>
     );
-}
+}}
 
 export default Contact;
+{/*19.42*/}
