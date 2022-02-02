@@ -187,6 +187,7 @@ import {Link} from 'react-router-dom'
                                 <Col md={10}>
                                     <input onChange={this.handleInputChange} type="textarea" name="message" id="message" value={this.state.message} rows="12" ></input>
                                 </Col>
+                                
                             </FormGroup>
                             <FormGroup row>
                                 <Col md={{size:10,offset:2}}>
