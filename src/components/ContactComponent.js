@@ -134,7 +134,7 @@ import {Link} from 'react-router-dom'
                                 <Col md={10}>
                                     <Input
                                     valid={errors.lastname===''}
-                                    invalid={errors.lastname!=''}
+                                    invalid={errors.lastname!==''}
                                      onBlur={this.handleBlur('lastname')}
                                     onChange={this.handleInputChange} type="text" id="lastname" name="lastname"
                                     placeholder="LastName" value={this.state.lastname}></Input>
