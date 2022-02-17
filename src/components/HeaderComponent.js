@@ -23,9 +23,10 @@ class Header extends Component{
     }
     handleLogin(event){
         this.toggleModal()
-        alert('Username '+this.username.value+ 'Password '+this.password.value+ 'Remember '+this.remember.checked)
+        alert('Username '+this.username.value+ '  Password '+this.password.value+ '  Remember '+this.remember.checked)
         event.prefentDefault()
     }  
+    
    render(props){
        console.log(Modal)
        return(
@@ -84,16 +85,18 @@ class Header extends Component{
 {/*<Modal  isOpen={true} toggle={this.toggleModal}>
     <ModalHeader toggle={this.toggleModal}>Leader1</ModalHeader>
        <ModalBody> */}
+       <div>
     <Form onSubmit={this.handleLogin}>
         <FormGroup>
-            <Label htmlFor='username'></Label>
+            <Label htmlFor='username'>Username</Label>
             <Input type='text' id="username" name="username" innerRef={(input)=>this.username=input}></Input>
         </FormGroup>
         <FormGroup>
-            <Label htmlFor='password'></Label>
+            <Label htmlFor='password'>Password</Label>
             <Input type="text" id='password' name='password' innerRef={(input)=>this.password=input} 
             ></Input>
         </FormGroup>
+
         <FormGroup check>
               <Label check>
               <Input type='checkbox' name='remember' innerRef={(input)=>this.remember=input}></Input>
@@ -107,7 +110,7 @@ class Header extends Component{
     <Modal show={true}>
         
     </Modal>*/}
-    </div>
+    </div></div>
            </React.Fragment>
        )
    }
